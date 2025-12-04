@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Web Lirik — Mardua Holong (Template)</title>
+  <style>
+    :root{--bg:#fffaf3;--card:#ffffff;--accent:#b97f5a;--muted:#6b5b4a}
+    body{font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;background:#f3ece3;margin:0;padding:24px;color:var(--muted)}
+    .container{max-width:900px;margin:0 auto}
+    header{display:flex;gap:16px;align-items:center;margin-bottom:18px}
+    h1{font-size:20px;margin:0;color:#3a2f28}
+    .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.06);}
+    .controls{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}
+    button, input[type=range], select{cursor:pointer}
+    textarea{width:100%;min-height:140px;padding:12px;border-radius:8px;border:1px solid #e6d9cd;resize:vertical}
+    .lyrics-view{margin-top:12px;padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fffaf0);height:360px;overflow:auto;border:1px solid #e9dfd2}
+    .line{padding:6px 8px;border-radius:6px;margin:4px 0}
+    .line:hover{background:#f6efe6}
+    .line.active{background:linear-gradient(90deg, rgba(185,127,90,0.18), rgba(185,127,90,0.08));box-shadow:inset 0 0 0 1px rgba(185,127,90,0.08)}
+    .toolbar{display:flex;gap:8px;align-items:center}
+    .small{font-size:13px;color:#8a7a6c}
+    .meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    .badge{background:#efe3da;padding:6px 8px;border-radius:999px;font-weight:600;color:#6b4f3d}
+    .file{display:flex;gap:8px;align-items:center}
+    footer{margin-top:12px;font-size:13px;color:#7d6b5d}
+    @media (max-width:600px){.lyrics-view{height:280px}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>Web Lirik — Mardua Holong (template)</h1>
+        <div class="small">Template menampilkan lirik, karaoke sederhana, dan fitur ekspor. <strong>Tidak menyertakan lirik asli.</strong></div>
+      </div>
+      <div style="margin-left:auto" class="meta">
+        <div class="badge">Batak</div>
+        <div class="small">Template siap disunting</div>
+      </div>
+    </header>
+
+    <div class="card">
+      <div class="controls">
+        <label style="flex:1;min-width:220px">
+          <div class="small">Tempel atau ketik lirik di sini (setiap baris baru = 1 baris lirik)</div>
+          <textarea id="inputLyrics" placeholder="Tempel lirik di sini... (tidak termasuk lirik berhak cipta tanpa izin)"></textarea>
+        </label>
+
+        <div style="min-width:220px">
+          <div class="small">Audio (opsional) — pilih file .mp3/.ogg</div>
+          <input id="audioFile" type="file" accept="audio/*">
+          <div class="file small" style="margin-top:6px">
+            <button id="applyBtn">Terapkan lirik</button>
+            <button id="clearBtn">Bersihkan</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="toolbar" style="margin-bottom:10px">
+        <audio id="audio" controls style="width:320px"></audio>
+        <div style="display:flex;gap:6px;align-items:center;margin-left:auto">
+          <button id="karaokeBtn">Mulai Karaoke</button>
+          <button id="stopKaraokeBtn">Hentikan</button>
+          <button id="timestampBtn">Rekam Timestamp (manual)</button>
+          <button id="exportLrcBtn">Ekspor .lrc</button>
+          <button id="downloadTxtBtn">Unduh .txt</button>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:8px">
+        <div class="small">Kecepatan baris (ms): <input id="intervalRange" type="range" min="400" max="5000" value="1200"></div>
+        <div id="intervalVal" class="small">1200 ms</div>
+      </div>
+
+      <div id="lyricsView" class="lyrics-view" tabindex="0"></div>
+
+      <footer>
+        Petunjuk singkat: tempel lirik -> klik "Terapkan lirik". Untuk menyinkronkan timestamp: upload audio, putar audio, lalu klik tiap baris saat audio mencapai baris itu (gunakan tombol "Rekam Timestamp (manual)"). Setelah selesai klik "Ekspor .lrc" untuk mendownload file lirik dengan waktu.
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    const input = document.getElementById('inputLyrics');
+    const applyBtn = document.getElementById('applyBtn');
+    const lyricsView = document.getElementById('lyricsView');
+    const clearBtn = document.getElementById('clearBtn');
+    const karaokeBtn = document.getElementById('karaokeBtn');
+    const stopKaraokeBtn = document.getElementById('stopKaraokeBtn');
+    const intervalRange = document.getElementById('intervalRange');
+    const intervalVal = document.getElementById('intervalVal');
+    const audioFile = document.getElementById('audioFile');
+    const audioEl = document.getElementById('audio');
+    const timestampBtn = document.getElementById('timestampBtn');
+    const exportLrcBtn = document.getElementById('exportLrcBtn');
+    const downloadTxtBtn = document.getElementById('downloadTxtBtn');
+
+    let lines = [];
+    let karaokeTimer = null;
+    let currentIdx = -1;
+    let timestamps = []; // seconds
+    let recordingMode = false;
+
+    intervalRange.addEventListener('input', ()=>{
+      intervalVal.textContent = intervalRange.value + ' ms';
+    });
+
+    audioFile.addEventListener('change', (e)=>{
+      const f = e.target.files[0];
+      if(!f) return;
+      const url = URL.createObjectURL(f);
+      audioEl.src = url;
+    });
+
+    function renderLines(){
+      lyricsView.innerHTML = '';
+      lines.forEach((t,i)=>{
+        const div = document.createElement('div');
+        div.className = 'line';
+        div.dataset.index = i;
+        div.textContent = t || '\u00A0';
+        div.addEventListener('click', ()=>{
+          setActiveLine(i);
+          // if recording mode and audio available, save timestamp
+          if(recordingMode && audioEl.src){
+            timestamps[i] = audioEl.currentTime;
+            div.title = formatTime(timestamps[i]);
+          }
+        });
+        lyricsView.appendChild(div);
+      });
+    }
+
+    function setActiveLine(i){
+      const prev = lyricsView.querySelector('.line.active');
+      if(prev) prev.classList.remove('active');
+      const node = lyricsView.querySelector(`.line[data-index='${i}']`);
+      if(node){
+        node.classList.add('active');
+        node.scrollIntoView({behavior:'smooth',block:'center'});

@@ -1,0 +1,119 @@
+<html>
+<head>
+    <title>Kalkulator Luas Persegi Panjang</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(to right, #6dd5fa, #2980b9);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+
+        .card {
+            background: #fff;
+            color: #333;
+            padding: 30px 25px;
+            width: 380px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            text-align: center;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            color: #2980b9;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 2px solid #2980b9;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #1a5f82;
+        }
+
+        button {
+            width: 95%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 16px;
+            border: none;
+            margin-top: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #1e6f9f;
+        }
+
+        .result {
+            margin-top: 20px;
+            background: #eef7ff;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #2980b9;
+            text-align: left;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Kalkulator Luas Persegi Panjang</h2>
+
+    <input id="nama" placeholder="Masukkan Nama Anda">
+    <input id="panjang" placeholder="Masukkan Panjang (cm)" type="number">
+    <input id="lebar" placeholder="Masukkan Lebar (cm)" type="number">
+
+    <button onclick="hitung()">Hitung Luas</button>
+
+    <div id="hasil" class="result"></div>
+</div>
+
+<script>
+function hitung() {
+    let nama = document.getElementById("nama").value;
+    let panjang = document.getElementById("panjang").value;
+    let lebar = document.getElementById("lebar").value;
+
+    if (nama === "" || panjang === "" || lebar === "") {
+        alert("Harap isi semua data!");
+        return;
+    }
+
+    let luas = panjang * lebar;
+
+    document.getElementById("hasil").style.display = "block";
+    document.getElementById("hasil").innerHTML = `
+        <b>Hasil Perhitungan:</b><br><br>
+        Programmer: <b>${nama}</b><br>
+        Panjang: <b>${panjang} cm</b><br>
+        Lebar: <b>${lebar} cm</b><br><br>
+        Luas = ${panjang} × ${lebar} = <b>${luas} cm<sup>2</sup></b>
+    `;
+}
+</script>
+
+</body>
+</html>

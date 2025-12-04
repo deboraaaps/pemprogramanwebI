@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="id">
+<head>
+    <title>Peta Klik Gambar</title>
+    <meta charset="UTF-8">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1b5e20, #66bb6a);
+            margin: 0;
+            padding: 0;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .container {
+            width: 60%;
+            background: #e8f5e9;
+            margin: 50px auto;
+            padding: 35px;
+            border-radius: 14px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+            color: #1b5e20;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        img {
+            border-radius: 8px;
+            border: 3px solid #2e7d32;
+            transition: 0.4s;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+            border-color: #66bb6a;
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        /* Highlight area saat diarahkan */
+        area:hover {
+            cursor: pointer;
+            outline: 3px solid #ffeb3b;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <p>Klik pada bagian tertentu pada gambar di bawah ini:</p>
+
+    <img src="Untitled Diagram.drawio.png" width="350" height="300" alt="diagramku" usemap="#picturemap">
+
+    <map name="picturemap">
+        <area shape="rect" coords="0,0,180,300" href="a.htm" title="Bagian A">
+        <area shape="circle" coords="220,150,20" href="b.htm" title="Bagian B">
+        <area shape="circle" coords="300,150,30" href="c.htm" title="Bagian C">
+    </map>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Nuansa Alam</title>
+    <style>
+        /* Background alam */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            animation: fadeIn 2s ease-in;
+        }
+
+        /* Animasi fade in halaman */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: left;
+            padding: 20px;
+            background-color: rgba(34, 49, 34, 0.7); /* semi-transparan hijau */
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 15px;
+            font-size: 18px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            background-color: rgba(46, 139, 87, 0.8); /* hijau daun */
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #2e8b57;
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+        }
+
+        /* Garis horizontal animasi */
+        hr {
+            border: none;
+            height: 4px;
+            width: 0;
+            margin: 20px 0;
+            background: #2e8b57;
+            animation: expand 1.5s forwards;
+        }
+
+        @keyframes expand {
+            from { width: 0; }
+            to { width: 50%; }
+        }
+
+        /* Konten utama */
+        .content {
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            border-radius: 15px;
+            line-height: 1.6;
+            font-size: 18px;
+            animation: slideUp 1.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .content a {
+            color: #ffd700; /* emas alami */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .content a:hover {
+            color: #ffa500; /* oranye hangat */
+            text-decoration: underline;
+        }
+
+        /* Footer kecil */
+        footer {
+            text-align: center;
+            padding: 10px;
+            color: #ddd;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <hr>
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="profil.html">Profil</a>
+        <a href="about.html">About</a>
+        <a href="galery.html">Gallery</a>
+        <a href="kontak.html">Kontak</a>
+    </nav>
+    <hr>
+    <div class="content">
+        Jalan-jalan ke alam terbuka selalu menyegarkan pikiran dan jiwa. Udara segar, pemandangan hijau, dan suara alam menciptakan suasana yang menenangkan.<br><br>
+    </div>
+    <footer>
+        © 2025 Web Nuansa Alam - Debora
+    </footer>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Penggunaan Font</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Times New Roman", serif;
+            background: linear-gradient(135deg, #d7c9ff, #ffffff);
+            color: black; /* Semua teks default hitam */
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 18px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: black; /* Judul hitam */
+        }
+
+        .font-sample {
+            margin-bottom: 14px;
+        }
+
+        /* Ukuran Font (Semua teks tetap hitam) */
+        .size_5 { font-size: 32px; }
+        .size_minus3 { font-size: 10px; }
+        .size_minus2 { font-size: 12px; font-family: "Times New Roman"; }
+        .size_minus1 { font-size: 14px; font-family: "Times New Roman"; text-align: center; }
+        .size_plus1 { font-size: 20px; }
+        .size_plus2 { font-size: 26px; }
+        .size_plus3 { font-size: 32px; font-weight: bold; }
+
+        /* Tabel Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+            font-size: 17px;
+        }
+
+        th, td {
+            border: 1px solid #6a44b5;
+            padding: 10px;
+            text-align: center;
+            color: black;
+        }
+
+        th {
+            background-color: #d4c4ff;
+            color: black;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f5edff;
+        }
+
+        tr:hover {
+            background-color: #e9dbff;
+            transition: 0.3s;
+        }
+
+        .table-title {
+            text-align: center;
+            margin-top: 35px;
+            color: black;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Contoh Penggunaan Variasi Ukuran Font</h2>
+
+    <div class="font-sample size_5">size = 5</div>
+    <div class="font-sample size_minus3">teks ukuran = -3</div>
+    <div class="font-sample size_minus2">teks ukuran = -2</div>
+    <div class="font-sample size_minus1">teks ukuran = -1</div>
+    <div class="font-sample size_plus1">teks ukuran = +1</div>
+    <div class="font-sample size_plus2">teks ukuran = +2</div>
+    <div class="font-sample size_plus3">teks ukuran = +3</div>
+
+    <div class="table-title">Tabel Keterangan Ukuran Font</div>
+
+    <table>
+        <tr>
+            <th>Ukuran</th>
+            <th>Deskripsi</th>
+            <th>Contoh Tampilan</th>
+        </tr>
+        <tr>
+            <td>Size = -3</td>
+            <td>Sangat kecil</td>
+            <td class="size_minus3">contoh teks</td>
+        </tr>
+        <tr>
+            <td>Size = -2</td>
+            <td>Kecil</td>
+            <td class="size_minus2">contoh teks</td>
+        </tr>
+        <tr>
+            <td>Size = -1</td>
+            <td>Lebih kecil dari normal</td>
+            <td class="size_minus1">contoh teks</td>
+        </tr>
+        <tr>
+            <td>Size = +1</td>
+            <td>Lebih besar dari normal</td>
+            <td class="size_plus1">contoh teks</td>
+        </tr>
+        <tr>
+            <td>Size = +2</td>
+            <td>Cukup besar</td>
+            <td class="size_plus2">contoh teks</td>
+        </tr>
+        <tr>
+            <td>Size = +3</td>
+            <td>Besar & tebal</td>
+            <td class="size_plus3">contoh teks</td>
+        </tr>
+    </table>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,249 @@
+# Git Ignore File - pemprogramanwebI
+
+# ============================================================================
+# OS Files - Ignore sistem operasi files
+# ============================================================================
+.DS_Store                 # macOS
+.DS_Store?                # macOS
+._*                       # macOS
+.Spotlight-V100           # macOS
+.Trashes                  # macOS
+ehthumbs.db              # Windows
+Thumbs.db                # Windows
+.file                    # Windows
+
+# ============================================================================
+# IDE & Editor Files - Ignore editor configuration
+# ============================================================================
+.vscode/                 # VS Code
+.idea/                   # IntelliJ IDEA
+*.swp                    # Vim
+*.swo                    # Vim
+*~                       # Vim
+.sublime-project         # Sublime Text
+.sublime-workspace       # Sublime Text
+*.code-workspace         # VS Code workspace
+.editorconfig           # EditorConfig
+
+# ============================================================================
+# Node.js & NPM
+# ============================================================================
+node_modules/            # Installed packages
+npm-debug.log           # NPM debug log
+npm-debug.log.*         # NPM debug logs
+package-lock.json       # Lock file
+yarn.lock               # Yarn lock file
+.npmrc                  # NPM config
+.yarnrc                 # Yarn config
+
+# ============================================================================
+# Python
+# ============================================================================
+__pycache__/            # Python cache
+*.py[cod]               # Compiled Python
+*.egg-info/             # Python package info
+dist/                   # Distribution
+build/                  # Build directory
+.Python                 # Python
+*.egg                   # Python egg
+venv/                   # Virtual environment
+env/                    # Virtual environment
+ENV/                    # Virtual environment
+
+# ============================================================================
+# Build & Compiled Files
+# ============================================================================
+dist/                   # Distribution
+build/                  # Build output
+*.o                     # Object files
+*.obj                   # Object files
+*.so                    # Shared libraries
+*.a                     # Static libraries
+*.lib                   # Static libraries
+*.dll                   # Dynamic libraries
+*.exe                   # Executables
+
+# ============================================================================
+# Dependency Directories
+# ============================================================================
+node_modules/
+vendor/
+bower_components/
+
+# ============================================================================
+# Logs & Temporary Files
+# ============================================================================
+*.log                   # Log files
+logs/                   # Log directory
+temp/                   # Temporary files
+tmp/                    # Temporary directory
+*.tmp                   # Temporary files
+*.temp                  # Temporary files
+
+# ============================================================================
+# Environment & Configuration
+# ============================================================================
+.env                    # Environment variables
+.env.local              # Local environment
+.env.*.local            # Environment overrides
+config/local.js         # Local config
+
+# ============================================================================
+# Test & Coverage
+# ============================================================================
+coverage/               # Code coverage
+.nyc_output/            # NYC output
+*.lcov                  # LCOV coverage
+
+# ============================================================================
+# IDE Specific Files
+# ============================================================================
+
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.vscode-test/
+
+# JetBrains
+.idea/
+.idea_modules/
+*.iml
+*.iws
+*.ipr
+.project
+.pydevproject
+.settings/
+*.sublime-workspace
+
+# Emacs
+*~
+.#*
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ============================================================================
+# OS Specific
+# ============================================================================
+
+# macOS
+.AppleDouble
+.LSOverride
+._*
+.apdisk
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.directory
+
+# ============================================================================
+# Archive Files
+# ============================================================================
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+*.iso
+*.dmg
+
+# ============================================================================
+# Backup Files
+# ============================================================================
+*.bak
+*.backup
+*.orig
+*.swp
+*.swo
+*~
+
+# ============================================================================
+# Cache Files
+# ============================================================================
+.cache/
+.grunt/
+.next/
+.nuxt/
+dist/
+.cache/
+.vuepress/dist/
+
+# ============================================================================
+# Database Files
+# ============================================================================
+*.db
+*.sqlite
+*.sqlite3
+*.pdb
+
+# ============================================================================
+# Media Files - Optional (uncomment if needed)
+# ============================================================================
+# *.psd           # Photoshop
+# *.ai            # Adobe Illustrator
+# *.mov           # Video
+# *.mp4           # Video
+# *.avi           # Video
+# *.wav           # Audio
+# *.mp3           # Audio
+
+# ============================================================================
+# Large Files - Optional (uncomment if needed)
+# ============================================================================
+# *.zip
+# *.rar
+# *.tar.gz
+# *.iso
+# *.dmg
+
+# ============================================================================
+# Project Specific Files
+# ============================================================================
+
+# Jangan ignore file penting dari project
+!.gitkeep              # Keep empty directories
+!README.md
+!LICENSE
+!CONTRIBUTING.md
+
+# Ignore local development files
+.env.development.local
+.env.test.local
+
+# Ignore image cache (tapi keep original images)
+.image-cache/
+*.webp.cache
+
+# ============================================================================
+# IDE Suggestions (hapus # untuk mengaktifkan)
+# ============================================================================
+
+# Untuk mengignore visual studio project files
+# [Oo]bj/
+# [Bb]in/
+# *.user
+# *.userprefs
+
+# Untuk mengignore Rider IDE files
+# .idea_modules/
+# *.sln.iml
+
+# ============================================================================
+# Documentation Build Files (jika ada)
+# ============================================================================
+docs/_build/
+site/
+.vuepress/dist/
+
+# ============================================================================
+# End of .gitignore
+# ============================================================================

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Form Pendaftaran Mahasiswa</title>
+
+<style>
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:linear-gradient(135deg,#f59e0b,#f97316);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:"Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+/* Animasi masuk */
+@keyframes slideFade{
+  from{
+    opacity:0;
+    transform:translateY(50px) scale(0.95);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+/* Card form */
+.form-card{
+  width:520px;
+  max-width:95%;
+  background:#fff9eb;
+  padding:30px 40px;
+  border-radius:18px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.3);
+  animation:slideFade 1s ease;
+}
+
+h1{
+  text-align:center;
+  color:#b45309;
+  margin-bottom:15px;
+}
+
+hr{
+  border:none;
+  height:2px;
+  background:linear-gradient(to right,#f59e0b,#f97316);
+  margin:10px 0 25px;
+}
+
+/* Layout row */
+.form-row{
+  margin-bottom:12px;
+}
+
+label{
+  display:block;
+  font-weight:600;
+  margin-bottom:4px;
+  color:#7c2d12;
+}
+
+input[type=text],
+select,
+textarea{
+  width:100%;
+  padding:8px 10px;
+  border-radius:10px;
+  border:1px solid #fcd34d;
+  outline:none;
+  transition:0.3s;
+}
+
+input[type=text]:focus,
+select:focus,
+textarea:focus{
+  background:#fffbeb;
+  border-color:#f97316;
+  box-shadow:0 0 0 3px rgba(249,115,22,0.25);
+}
+
+/* Radio & checkbox */
+.options{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  color:#7c2d12;
+}
+
+/* Button */
+.actions{
+  text-align:center;
+  margin-top:20px;
+}
+
+button{
+  background:linear-gradient(135deg,#f59e0b,#f97316);
+  color:white;
+  border:none;
+  padding:10px 24px;
+  margin:5px;
+  border-radius:20px;
+  font-size:15px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  transform:scale(1.07);
+  box-shadow:0 6px 15px rgba(0,0,0,0.25);
+}
+
+</style>
+</head>
+<body>
+
+<div class="form-card">
+<form>
+
+<h1>Form Pendaftaran</h1>
+<hr>
+
+<div class="form-row">
+<label>NIM</label>
+<input type="text" name="nim" placeholder="Masukkan NIM">
+</div>
+
+<div class="form-row">
+<label>Nama</label>
+<input type="text" name="nama" placeholder="Masukkan nama lengkap">
+</div>
+
+<div class="form-row">
+<label>Jenis Kelamin</label>
+<div class="options">
+  <label><input type="radio" name="jkel" value="Pria"> Pria</label>
+  <label><input type="radio" name="jkel" value="Wanita"> Wanita</label>
+</div>
+</div>
+
+<div class="form-row">
+<label>Agama</label>
+<select name="agama">
+  <option>Islam</option>
+  <option>Katholik</option>
+  <option>Kristen</option>
+  <option>Hindu</option>
+  <option>Budha</option>
+</select>
+</div>
+
+<div class="form-row">
+<label>Status</label>
+<div class="options">
+  <label><input type="radio" name="status" value="Kawin"> Kawin</label>
+  <label><input type="radio" name="status" value="Belum Kawin"> Belum Kawin</label>
+</div>
+</div>
+
+<div class="form-row">
+<label>Jurusan</label>
+<select name="jurusan">
+  <option>Teknik Informatika</option>
+  <option>Manajemen Informatika</option>
+  <option>Teknik Komputer</option>
+  <option>Teknik Industri</option>
+</select>
+</div>
+
+<div class="form-row">
+<label>Hobi</label>
+<div class="options">
+  <label><input type="checkbox" value="Futsal"> Futsal</label>
+  <label><input type="checkbox" value="Renang"> Renang</label>
+  <label><input type="checkbox" value="Traveling"> Traveling</label>
+</div>
+</div>
+
+<div class="form-row">
+<label>Keterangan</label>
+<textarea rows="3" placeholder="Masukkan komentar..."></textarea>
+</div>
+
+<div class="actions">
+<button type="submit">Kirim</button>
+<button type="reset">Ulang</button>
+</div>
+
+</form>
+</div>
+
+</body>
+</html>
